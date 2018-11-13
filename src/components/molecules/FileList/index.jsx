@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Button from '../../atoms/Button';
 import Divider from '@material-ui/core/Divider';
 import FileIcon from '@material-ui/icons/FileCopy';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
@@ -39,31 +40,30 @@ class FileList extends Component {
     };
   }
   render() {
-    const { classes } = this.props;
+    const { classes, theme } = this.props;
     return (
       <div className={classes.root}>
         <List component="nav">
-          <ListItem button>
-            <ListItemIcon>
-              <FileIcon />
-            </ListItemIcon>
-            <ListItemText primary="index.py" />
-          </ListItem>
+          <Button
+            iconComponent={<FileIcon />}
+            iconText="index.py"
+            theme={theme}
+          />
         </List>
         <Divider />
         <List component="nav">
-          <ListItem button onClick={this.props.onSave}>
-            <ListItemIcon>
-              <DownloadIcon />
-            </ListItemIcon>
-            <ListItemText primary="Save File" />
-          </ListItem>
-          <ListItem button onClick={this.chooseFile}>
-            <ListItemIcon>
-              <UploadIcon />
-            </ListItemIcon>
-            <ListItemText primary="Open File" />
-          </ListItem>
+          <Button
+            iconComponent={<DownloadIcon />}
+            iconText="Save File"
+            onClick={this.props.onSave}
+            theme={theme}
+          />
+          <Button
+            iconComponent={<UploadIcon />}
+            iconText="Open File"
+            onClick={this.chooseFile}
+            theme={theme}
+          />
         </List>
         <input
           type="file"

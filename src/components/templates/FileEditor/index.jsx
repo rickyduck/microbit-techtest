@@ -66,7 +66,11 @@ class FileEditor extends Component {
     return (
       <section style={styles.container}>
         <div style={styles.files}>
-          <FileList onLoad={this.loadCode} onSave={this.saveCode} />
+          <FileList
+            theme={this.props.theme}
+            onLoad={this.loadCode}
+            onSave={this.saveCode}
+          />
         </div>
         <div style={styles.editor}>
           <MonacoEditor
